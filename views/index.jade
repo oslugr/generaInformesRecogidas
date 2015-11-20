@@ -1,8 +1,34 @@
-doctype
+doctype html
 html(lang='es')
-  head
-    meta(charset='UTF-8')
-    title Recogidas OSL
-    script(src='http://code.jquery.com/jquery-1.11.3.min.js')
-  body
-    h1 Recogidas OSL
+	head
+		meta(charset='UTF-8')
+		title Recogidas OSL
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+		script.
+			$(document).ready(function() {
+			var feeds = "https://spreadsheets.google.com/feeds/list/14VBFToWRlDLs5ur7p49cDnE_tYbt9PJgEe2A65B0Gqs/od6/public/values?alt=json";
+			$.getJSON(feeds, function(result) {
+			var items = [];
+			$.each(result.feed.entry, function(key, value) {
+			items.push("<li id='" + key + "'>" + "Nº " + key + ": <ul>" +
+			"<li> Fecha: " + value.gsx$timestamp.$t + "</li>" +
+			"<li> Nombre: " + value.gsx$nombre.$t + "</li>" +
+			"<li> Apellidos: " + value.gsx$apellidos.$t + "</li>" +
+			"<li> Centro: " + value.gsx$organizaciónocentro.$t + "</li>" +
+			"<li> Departamento: " + value.gsx$departamento.$t + "</li>" +
+			"<li> Correo: " + value.gsx$correoelectrónico.$t + "</li>" +
+			"<li> Teléfono: " + value.gsx$teléfono.$t + "</li>" +
+			"<li> Dirección: " + value.gsx$dirección.$t + "</li>" +
+			"<li> Elemento: " + value.gsx$elemento.$t + "</li>" +
+			"<li> Modelo: " + value.gsx$modelo.$t + "</li>" +
+			"<li> Cantidad: " + value.gsx$cantidad.$t + "</li>" +
+			"<li> Estado: " + value.gsx$estado.$t + "</li>" +
+			"</ul>" + "</li>");
+			});
+			$("<ul/>", {
+			html: items.join("")
+			}).appendTo("body");
+			});
+			});
+	body
+		h1 Recogidas OSL

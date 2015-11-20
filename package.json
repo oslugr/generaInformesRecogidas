@@ -1,7 +1,10 @@
 {
   "name": "genera-informes",
   "version": "0.1.0",
-  "author": "Germán Martínez Maldonado",
+  "author": "Oficina de Software Libre de la Universidad de Granada <osl@ugr.es> (http://osl.ugr.es/)",
+  "contributors": [
+    "Germán Martínez Maldonado <germaaan@gmail.com>"
+  ],
   "description": "Generación de informes con la información procesada desde hojas de cálculo de GoogleDocs",
   "keywords": [
     "recogidas",
