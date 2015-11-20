@@ -1,0 +1,48 @@
+{
+  "name": "genera-informes",
+  "version": "0.1.0",
+  "author": "Germán Martínez Maldonado",
+  "description": "Generación de informes con la información procesada desde hojas de cálculo de GoogleDocs",
+  "keywords": [
+    "recogidas",
+    "informes",
+    "google docs"
+  ],
+  "bugs": {
+    "url": "https://github.com/oslugr/generaInformesRecogidas"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/oslugr/generaInformesRecogidas.git"
+  },
+  "license": "GPL-3.0",
+  "main": "app.js",
+  "os": [
+    "linux"
+  ],
+  "private": false,
+  "directories": {
+    "lib": "",
+    "test": ""
+  },
+  "scripts": {
+    "start": "nodemon ./app.js 127.0.0.1 3000",
+    "test": ""
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "cookie-parser": "^1.4.0",
+    "debug": "^2.2.0",
+    "express": "^4.13.3",
+    "jade": "^1.11.0",
+    "morgan": "^1.6.1",
+    "request": "^2.65.0",
+    "serve-favicon": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.8.1"
+  },
+  "engines": {
+    "node": ">=0.12.7"
+  }
+}
