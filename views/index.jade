@@ -6,24 +6,30 @@ html(lang='es')
 		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
 		script.
 			$(document).ready(function() {
-			var feeds = "https://spreadsheets.google.com/feeds/list/14VBFToWRlDLs5ur7p49cDnE_tYbt9PJgEe2A65B0Gqs/od6/public/values?alt=json";
-			$.getJSON(feeds, function(result) {
+			var spreadsheetID = "14VBFToWRlDLs5ur7p49cDnE_tYbt9PJgEe2A65B0Gqs";
+			var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
+
+			$.getJSON(url, function(data) {
+			var entry = data.feed.entry;
 			var items = [];
-			$.each(result.feed.entry, function(key, value) {
-			items.push("<li id='" + key + "'>" + "Nº " + key + ": <ul>" +
-			"<li> Fecha: " + value.gsx$timestamp.$t + "</li>" +
-			"<li> Nombre: " + value.gsx$nombre.$t + "</li>" +
-			"<li> Apellidos: " + value.gsx$apellidos.$t + "</li>" +
-			"<li> Centro: " + value.gsx$organizaciónocentro.$t + "</li>" +
-			"<li> Departamento: " + value.gsx$departamento.$t + "</li>" +
-			"<li> Correo: " + value.gsx$correoelectrónico.$t + "</li>" +
-			"<li> Teléfono: " + value.gsx$teléfono.$t + "</li>" +
-			"<li> Dirección: " + value.gsx$dirección.$t + "</li>" +
-			"<li> Elemento: " + value.gsx$elemento.$t + "</li>" +
-			"<li> Modelo: " + value.gsx$modelo.$t + "</li>" +
-			"<li> Cantidad: " + value.gsx$cantidad.$t + "</li>" +
-			"<li> Estado: " + value.gsx$estado.$t + "</li>" +
+			var i = 1;
+
+			$(entry).each(function(){
+			items.push("<li id='" + i + "'>" + "Nº " + i + ": <ul>" +
+			"<li> Fecha: " + this.gsx$timestamp.$t + "</li>" +
+			"<li> Nombre: " + this.gsx$nombre.$t + "</li>" +
+			"<li> Apellidos: " + this.gsx$apellidos.$t + "</li>" +
+			"<li> Centro: " + this.gsx$organizaciónocentro.$t + "</li>" +
+			"<li> Departamento: " + this.gsx$departamento.$t + "</li>" +
+			"<li> Correo: " + this.gsx$correoelectrónico.$t + "</li>" +
+			"<li> Teléfono: " + this.gsx$teléfono.$t + "</li>" +
+			"<li> Dirección: " + this.gsx$dirección.$t + "</li>" +
+			"<li> Elemento: " + this.gsx$elemento.$t + "</li>" +
+			"<li> Modelo: " + this.gsx$modelo.$t + "</li>" +
+			"<li> Cantidad: " + this.gsx$cantidad.$t + "</li>" +
+			"<li> Estado: " + this.gsx$estado.$t + "</li>" +
 			"</ul>" + "</li>");
+			i++;
 			});
 			$("<ul/>", {
 			html: items.join("")
